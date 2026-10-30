@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101018">
+<title>Battle Arena Gaming — Tournament Hub</title>
+<style>
+:root{--bg:#0c0c12;--panel:#15151f;--panel2:#1c1c29;--line:#303044;--text:#f5f5fb;--muted:#a6a6bd;--orange:#ff7a1a;--yellow:#ffc247;--green:#4dd69a;--red:#ff6577}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#27203b 0,transparent 38%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+.wrap{max-width:1050px;margin:auto;padding:16px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 22px}.brand{display:flex;align-items:center;gap:11px}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--orange),#ffbd44);display:grid;place-items:center;color:#1a1010;font-size:24px;font-weight:950;box-shadow:0 8px 28px #ff7a1a30}.brand h1{font-size:17px;letter-spacing:.4px;margin:0}.brand small{color:var(--muted)}.pill{font-size:12px;color:var(--green);border:1px solid #276e55;background:#143126;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.hero{border:1px solid #45324a;border-radius:24px;padding:25px 22px;background:linear-gradient(120deg,#281b32,#181821 68%,#292018);position:relative;overflow:hidden}.hero:after{content:"⚔";position:absolute;right:15px;top:0;font-size:125px;opacity:.08;transform:rotate(-12deg)}.eyebrow{color:var(--yellow);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.hero h2{font-size:clamp(27px,6vw,42px);line-height:1.08;margin:9px 0 12px;max-width:650px}.hero p{color:#c5c3d3;max-width:600px;margin:0 0 18px}.btn{border:0;border-radius:12px;padding:12px 15px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;font-size:14px}.primary{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#1a1110}.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.danger{background:#3b1d27;border:1px solid #71313e;color:#ffb6c0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0 20px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:13px}.stat b{font-size:22px;display:block}.stat span{color:var(--muted);font-size:12px}
+.tabs{display:flex;gap:7px;overflow-x:auto;padding:3px 0 14px}.tab{flex:1;min-width:max-content;border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:11px 13px;border-radius:12px;font-weight:750;cursor:pointer}.tab.active{background:#392518;border-color:#a65320;color:#ffd3ad}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px;min-width:0}.panel h3{font-size:17px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 14px}.field{margin:11px 0}.field label{display:block;color:#d8d8e7;font-size:13px;font-weight:700;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #3b3b52;background:#101019;color:var(--text);border-radius:10px;padding:12px;font:inherit;outline:none}.field input:focus,.field select:focus{border-color:var(--orange)}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.note{font-size:12px;color:var(--muted)}.cardlist{display:grid;gap:9px}.team{border:1px solid var(--line);border-radius:13px;padding:12px;background:#111119;display:flex;gap:11px;align-items:center;justify-content:space-between}.teamicon{width:40px;height:40px;border-radius:12px;background:#33243a;display:grid;place-items:center;font-size:19px;flex-shrink:0}.teaminfo{min-width:0;flex:1}.teaminfo b{display:block;overflow-wrap:anywhere}.teaminfo small{color:var(--muted)}.badge{background:#242436;color:#d9d9ec;border-radius:99px;padding:5px 8px;font-size:11px;white-space:nowrap}.match{border:1px solid var(--line);border-radius:13px;padding:13px;margin:9px 0;background:#111119}.matchhead{display:flex;justify-content:space-between;gap:8px;align-items:center}.match h4{margin:0;font-size:15px}.match p{margin:7px 0 0;color:var(--muted);font-size:13px}.status{font-size:11px;color:var(--green);font-weight:800}.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:430px;font-size:13px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px}td:first-child{font-weight:900;color:var(--yellow)}.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed #3b3b52;border-radius:13px}.admin details summary{cursor:pointer;font-weight:800;color:#ffd3ad}.admin{border-color:#69472c}.adminfields{margin-top:13px}.footer{padding:20px 4px 8px;text-align:center;color:#77778f;font-size:12px}.hidden{display:none!important}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#eafbf3;color:#0b3927;padding:12px 16px;border-radius:12px;box-shadow:0 10px 40px #0008;z-index:10;font-weight:800;max-width:90vw}.tinybtn{border:1px solid var(--line);background:#20202d;color:var(--text);padding:7px 9px;border-radius:8px;cursor:pointer;font-size:12px}
+@media(max-width:740px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.hero{padding:22px 17px}.hero:after{right:-8px;font-size:90px}.stats{gap:7px}.stat{padding:10px}.stat b{font-size:19px}.top{padding-top:5px}.pill{font-size:10px}.panel{padding:14px}.tabs .tab{padding:10px}}
+@media(max-width:390px){.row2{grid-template-columns:1fr}.brand h1{font-size:15px}.logo{width:40px;height:40px}.stats span{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">BA</div><div><h1>BATTLE ARENA GAMING</h1><small>Community Tournament Hub</small></div></div>
+    <div class="pill">● FREE ENTRY DEMO</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Play smart. Compete fair.</div>
+    <h2>Your next match<br>starts here.</h2>
+    <p>Register your squad, check match schedules and follow the leaderboard. This starter version is free to test.</p>
+    <button class="btn primary" onclick="go('register')">＋ Register a team</button>
+    <button class="btn secondary" onclick="go('schedule')">View matches ↓</button>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><b id="teamCount">0</b><span>Registered teams</span></div>
+    <div class="stat"><b id="matchCount">2</b><span>Listed matches</span></div>
+    <div class="stat"><b id="playerCount">0</b><span>Players registered</span></div>
+  </section>
+
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-tab="register" onclick="go('register')">Register</button>
+    <button class="tab" data-tab="teams" onclick="go('teams')">Team list</button>
+    <button class="tab" data-tab="schedule" onclick="go('schedule')">Schedule</button>
+    <button class="tab" data-tab="leaderboard" onclick="go('leaderboard')">Leaderboard</button>
+  </nav>
+
+  <main>
+    <section id="register" class="view">
+      <div class="grid">
+        <div class="panel">
+          <h3>Team registration</h3><p class="sub">Free entry demo · Fill the details below</p>
+          <form id="regForm">
+            <div class="field"><label for="teamName">Team name *</label><input id="teamName" maxlength="32" required placeholder="e.g. Gujarat Warriors"></div>
+            <div class="row2">
+              <div class="field"><label for="captain">Captain name *</label><input id="captain" maxlength="35" required placeholder="Your name"></div>
+              <div class="field"><label for="mode">Match mode *</label><select id="mode" required><option value="Squad">Squad (4 players)</option><option value="Duo">Duo (2 players)</option><option value="Solo">Solo (1 player)</option></select></div>
+            </div>
+            <div class="field"><label for="uid">Captain game UID *</label><input id="uid" inputmode="numeric" maxlength="20" required placeholder="Game UID (not password)"></div>
+            <div class="field"><label for="contact">Contact method (optional)</label><input id="contact" maxlength="60" placeholder="Instagram username or email — no passwords"></div>
+            <button class="btn primary" type="submit" style="width:100%">Submit free registration</button>
+            <p class="note">Demo note: details are saved only in this browser on this device. Do not enter UPI PINs, passwords or sensitive information.</p>
+          </form>
+        </div>
+        <div class="panel">
+          <h3>Before you register</h3><p class="sub">Keep matches fair and organised</p>
+          <div class="match"><div class="matchhead"><h4>🏆 Free-entry matches</h4><span class="status">OPEN</span></div><p>No entry fee in this demo. No cash-prize promise.</p></div>
+          <div class="match"><div class="matchhead"><h4>🛡️ Fair-play rules</h4></div><p>No cheats, hacks, abusive behaviour or impersonation. Admin decisions and match results should be recorded clearly.</p></div>
+          <div class="match"><div class="matchhead"><h4>🔒 Room privacy</h4></div><p>Never publish room passwords publicly. Share room details only with registered participants at match time.</p></div>
+          <div class="match"><div class="matchhead"><h4>📣 Need help?</h4></div><p>Add your official community contact after you create a dedicated tournament account.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="teams" class="view hidden">
+      <div class="panel"><h3>Registered teams</h3><p class="sub">Teams registered in this browser</p><div id="teamsList" class="cardlist"></div></div>
+    </section>
+
+    <section id="schedule" class="view hidden">
+      <div class="panel"><h3>Tournament schedule</h3><p class="sub">Sample matches — edit them in Admin tools</p><div id="scheduleList"></div></div>
+    </section>
+
+    <section id="leaderboard" class="view hidden">
+      <div class="panel"><h3>Leaderboard</h3><p class="sub">Demo standings. Admin can enter verified results below.</p><div class="tablewrap"><table><thead><tr><th>Rank</th><th>Team</th><th>Mode</th><th>Kills</th><th>Points</th></tr></thead><tbody id="leaderBody"></tbody></table></div></div>
+    </section>
+
+    <section class="panel admin">
+      <details>
+        <summary>⚙ Admin tools — add matches and update results</summary>
+        <div class="adminfields">
+          <p class="note">Prototype admin tools have no password protection. Do not publish this page as a shared live admin system. Anyone using this browser can edit local demo data.</p>
+          <h3 style="margin-top:14px">Add a match</h3>
+          <form id="matchForm">
+            <div class="field"><label for="matchTitle">Match title</label><input id="matchTitle" required maxlength="60" placeholder="Weekend Squad Scrim"></div>
+            <div class="row2">
+              <div class="field"><label for="matchDate">Date</label><input id="matchDate" type="date" required></div>
+              <div class="field"><label for="matchTime">Time</label><input id="matchTime" type="time" required></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label for="matchMode">Mode</label><select id="matchMode"><option>Squad</option><option>Duo</option><option>Solo</option></select></div>
+              <div class="field"><label for="matchStatus">Status</label><select id="matchStatus"><option>Registration open</option><option>Upcoming</option><option>Completed</option></select></div>
+            </div>
+            <button class="btn secondary" type="submit">＋ Add match</button>
+          </form>
+          <h3 style="margin-top:22px">Enter verified leaderboard result</h3>
+          <form id="scoreForm">
+            <div class="field"><label for="scoreTeam">Team</label><select id="scoreTeam" required></select></div>
+            <div class="row2">
+              <div class="field"><label for="kills">Kills</label><input id="kills" type="number" min="0" max="999" required value="0"></div>
+              <div class="field"><label for="points">Total points</label><input id="points" type="number" min="0" max="9999" required value="0"></div>
+            </div>
+            <button class="btn secondary" type="submit">Save result</button>
+          </form>
+          <button class="btn danger" id="resetBtn" type="button" style="margin-top:20px">Reset all demo data</button>
+        </div>
+      </details>
+    </section>
+  </main>
+  <footer class="footer">Unofficial community tournament starter · Not affiliated with or endorsed by Garena · Local demo only</footer>
+</div>
+<div id="toast" class="toast hidden" role="status"></div>
+<script>
+const KEY='battleArenaGamingStarter_v1';
+const initial={
+ teams:[],
+ matches:[
+  {id:'m1',title:'Community Squad Scrim',date:'',time:'19:00',mode:'Squad',status:'Sample match'},
+  {id:'m2',title:'Weekend Duo Practice',date:'',time:'20:00',mode:'Duo',status:'Sample match'}
+ ],
+ scores:[]
+};
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&Array.isArray(d.teams)&&Array.isArray(d.matches)&&Array.isArray(d.scores))return d}catch(e){}return structuredClone(initial)}
+let data=load();
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.add('hidden'),2800)}
+function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('hidden',v.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='teams')renderTeams();if(id==='schedule')renderMatches();if(id==='leaderboard')renderScores();window.scrollTo({top:document.querySelector('.tabs').offsetTop-8,behavior:'smooth'})}
+function formatDate(s){if(!s)return 'Date to be announced';const d=new Date(s+'T12:00:00');return d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}
+function renderStats(){document.getElementById('teamCount').textContent=data.teams.length;document.getElementById('matchCount').textContent=data.matches.length;document.getElementById('playerCount').textContent=data.teams.reduce((n,t)=>n+({Solo:1,Duo:2,Squad:4}[t.mode]||4),0)}
+function renderTeams(){const el=document.getElementById('teamsList');if(!data.teams.length){el.innerHTML='<div class="empty">No teams yet. Be the first to register!</div>'}else{el.innerHTML=data.teams.map((t,i)=>`<div class="team"><div class="teamicon">🎮</div><div class="teaminfo"><b>${esc(t.name)}</b><small>Captain: ${esc(t.captain)} · UID: ${esc(t.uid)}</small></div><span class="badge">${esc(t.mode)}</span><button class="tinybtn" onclick="removeTeam('${t.id}')">Remove</button></div>`).join('')}const sel=document.getElementById('scoreTeam');sel.innerHTML=data.teams.length?data.teams.map(t=>`<option value="${t.id}">${esc(t.name)}</option>`).join(''):'<option value="">Register a team first</option>'}
+function renderMatches(){const el=document.getElementById('scheduleList');if(!data.matches.length){el.innerHTML='<div class="empty">No matches scheduled yet.</div>';return}el.innerHTML=data.matches.map(m=>`<article class="match"><div class="matchhead"><h4>${esc(m.title)}</h4><span class="status">${esc(m.status)}</span></div><p>📅 ${esc(formatDate(m.date))} &nbsp; · &nbsp; 🕒 ${esc(m.time||'Time TBA')}</p><p>🎯 ${esc(m.mode)} mode</p><p class="note">Room details will be shared privately with registered players.</p><button class="tinybtn" onclick="removeMatch('${m.id}')">Remove match</button></article>`).join('')}
+function renderScores(){const el=document.getElementById('leaderBody');const scores=[...data.scores].sort((a,b)=>b.points-a.points||b.kills-a.kills);if(!scores.length){el.innerHTML='<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:22px">No verified results yet.</td></tr>';return}el.innerHTML=scores.map((s,i)=>{const t=data.teams.find(t=>t.id===s.teamId);return t?`<tr><td>${i+1}</td><td>${esc(t.name)}</td><td>${esc(t.mode)}</td><td>${s.kills}</td><td><b>${s.points}</b></td></tr>`:''}).join('')}
+function render(){renderStats();renderTeams();renderMatches();renderScores()}
+document.getElementById('regForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('teamName').value.trim(),captain=document.getElementById('captain').value.trim(),uid=document.getElementById('uid').value.trim(),mode=document.getElementById('mode').value,contact=document.getElementById('contact').value.trim();if(data.teams.some(t=>t.name.toLowerCase()===name.toLowerCase())){toast('That team name is already registered in this browser.');return}data.teams.push({id:'t'+Date.now(),name,captain,uid,mode,contact,created:new Date().toISOString()});save();e.target.reset();toast('Registration saved on this device!');go('teams')});
+document.getElementById('matchForm').addEventListener('submit',e=>{e.preventDefault();data.matches.push({id:'m'+Date.now(),title:document.getElementById('matchTitle').value.trim(),date:document.getElementById('matchDate').value,time:document.getElementById('matchTime').value,mode:document.getElementById('matchMode').value,status:document.getElementById('matchStatus').value});save();e.target.reset();toast('Match added to this browser.');go('schedule')});
+document.getElementById('scoreForm').addEventListener('submit',e=>{e.preventDefault();const teamId=document.getElementById('scoreTeam').value;if(!teamId){toast('Register a team before entering results.');return}const score={teamId,kills:Number(document.getElementById('kills').value),points:Number(document.getElementById('points').value)};const i=data.scores.findIndex(s=>s.teamId===teamId);if(i>=0)data.scores[i]=score;else data.scores.push(score);save();toast('Result saved.');go('leaderboard')});
+function removeTeam(id){if(!confirm('Remove this team and its score?'))return;data.teams=data.teams.filter(t=>t.id!==id);data.scores=data.scores.filter(s=>s.teamId!==id);save();toast('Team removed.')}
+function removeMatch(id){if(!confirm('Remove this match?'))return;data.matches=data.matches.filter(m=>m.id!==id);save();toast('Match removed.')}
+document.getElementById('resetBtn').addEventListener('click',()=>{if(!confirm('This clears all teams, matches and scores stored in this browser. Continue?'))return;data=structuredClone(initial);save();toast('Demo data reset.')});
+render();
+</script>
+</body>
+</html>
